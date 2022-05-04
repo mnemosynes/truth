@@ -1,0 +1,57 @@
+#Backups
+##
+
+*.tmp
+
+#General Linux
+##
+*~
+
+# osx files
+.DS_Store
+
+#Emacs
+##
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+.\#*
+
+#Node
+##
+# Logs
+logs
+*.log
+npm-debug.log*
+package-lock.json
+
+# Runtime data
+*.seed
+
+# Dependency directories
+node_modules/
+
+# TypeScript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+build
+.scannerwork
+markers
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# compiled
+/dist
