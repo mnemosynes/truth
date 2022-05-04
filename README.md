@@ -1,0 +1,2 @@
+# truth
+A graphQL server
