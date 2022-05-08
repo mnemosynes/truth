@@ -1,12 +1,29 @@
+import {
+  answerMagicEightBallQuestion,
+  answerHoroscopeQuestion,
+  answerFortuneQuestion,
+} from "./dataUtils";
 import { QuestionInterface } from "./typescriptTypes";
-import { askQuestionUtil } from "./resolverUtils";
 
 export const roots = {
   askQuestion: (question: { question: QuestionInterface }) => {
-    console.log(question, "?????");
-    const result = askQuestionUtil(question);
-    console.log("askQuestionUtil: ", result);
-
-    return result;
+    return askQuestionUtil(question);
   },
+};
+
+export const askQuestionUtil = ({
+  question,
+}: {
+  question: QuestionInterface;
+}) => {
+  switch (question.style) {
+    case "MAGIC_EIGHT_BALL":
+      return answerMagicEightBallQuestion();
+    case "HOROSCOPE":
+      return answerHoroscopeQuestion();
+    case "FORTUNE":
+      return answerFortuneQuestion();
+    default:
+      return "nada";
+  }
 };

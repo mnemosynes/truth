@@ -5,8 +5,25 @@ import {
   GraphQLSchema,
   GraphQLString,
 } from "graphql";
+import {
+  answerMagicEightBallQuestion,
+  answerHoroscopeQuestion,
+  answerFortuneQuestion,
+} from "./dataUtils";
+import { QuestionInterface } from "./typescriptTypes";
 
-import { askQuestionUtil } from "./resolverUtils";
+export const askQuestionResolver = (question: QuestionInterface) => {
+  switch (question.style) {
+    case "MAGIC_EIGHT_BALL":
+      return answerMagicEightBallQuestion();
+    case "HOROSCOPE":
+      return answerHoroscopeQuestion();
+    case "FORTUNE":
+      return answerFortuneQuestion();
+    default:
+      return "nada";
+  }
+};
 
 const questionType = new GraphQLInputObjectType({
   name: "Question",
@@ -46,7 +63,7 @@ const queryType = new GraphQLObjectType({
         question: { type: questionType },
       },
       resolve: (_, { question }) => {
-        return askQuestionUtil(question);
+        return askQuestionResolver(question);
       },
     },
   },
